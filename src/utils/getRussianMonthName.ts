@@ -1,19 +1,11 @@
+import { format, setMonth } from 'date-fns';
+import { ru } from 'date-fns/locale';
+import capitalizeString from './capitalizeString';
+
 const getRussianMonthName = (monthIndex: number): string => {
-  const monthNames = [
-    'Янв.',
-    'Февр.',
-    'Март',
-    'Апр.',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Авг.',
-    'Сент.',
-    'Окт.',
-    'Нояб.',
-    'Дек.',
-  ];
-  return monthNames[monthIndex];
+  const date = setMonth(new Date(), monthIndex);
+  const formattedMonthName = capitalizeString(format(date, 'LLL', { locale: ru }));
+  return formattedMonthName;
 };
 
 export default getRussianMonthName;
