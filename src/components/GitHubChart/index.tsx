@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import calculateLevel from '@/utils/calculateLevel';
+import getRussianMonthName from '@/utils/getRussianMonthName';
 
 function GitHubChart() {
   const [squares, setSquares] = useState<JSX.Element[]>([]);
+  const [months, setMonths] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -10,6 +12,7 @@ function GitHubChart() {
         const response = await fetch('https://dpg.gg/test/calendar.json');
         const data = await response.json();
         const squaresArray: JSX.Element[] = [];
+        const monthsArray: string[] = [];
         const currentDate = new Date();
 
         for (let i = 0; i < 357; i++) {
@@ -19,9 +22,16 @@ function GitHubChart() {
 
           const level = data[dateString] ? calculateLevel(data[dateString]) : 1;
           squaresArray.unshift(<li data-level={level}></li>);
+
+          if (i % 30 === 0) {
+            const monthIndex = date.getMonth();
+            const monthName = getRussianMonthName(monthIndex);
+            monthsArray.unshift(monthName);
+          }
         }
 
         setSquares(squaresArray);
+        setMonths(monthsArray);
       } catch (error) {
         console.error('Ошибка при получении данных', error);
       }
@@ -34,18 +44,9 @@ function GitHubChart() {
     <div className="github-chart">
       <div className="graph">
         <ul className="months">
-          <li>Янв.</li>
-          <li>Февр.</li>
-          <li>Март</li>
-          <li>Апр.</li>
-          <li>Май</li>
-          <li>Июнь</li>
-          <li>Июль</li>
-          <li>Авг.</li>
-          <li>Сент.</li>
-          <li>Окт.</li>
-          <li>Нояб.</li>
-          <li>Дек.</li>
+          {months.map((month) => (
+            <li key={month}>{month}</li>
+          ))}
         </ul>
         <ul className="days">
           <li>Пн</li>
