@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import calculateLevel from '@/utils/calculateLevel';
 
 function GitHubChart() {
-  const squares = [];
+  const [squares, setSquares] = useState<JSX.Element[]>([]);
 
-  for (var i = 1; i < 365; i++) {
-    const level = Math.floor(Math.random() * 5);
-    squares.push(<li data-level={level}></li>);
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://dpg.gg/test/calendar.json');
+        const data = await response.json();
+        const squaresArray: JSX.Element[] = [];
+        const currentDate = new Date();
+
+        for (let i = 0; i < 357; i++) {
+          const date = new Date(currentDate);
+          date.setDate(currentDate.getDate() - i);
+          const dateString = date.toISOString().split('T')[0];
+
+          const level = data[dateString] ? calculateLevel(data[dateString]) : 1;
+          squaresArray.unshift(<li data-level={level}></li>);
+        }
+
+        setSquares(squaresArray);
+      } catch (error) {
+        console.error('Ошибка при получении данных', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="github-chart">
