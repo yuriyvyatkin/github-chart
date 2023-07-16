@@ -1,0 +1,9 @@
+.github-chart {
+  min-width: 920px;
+  min-height: 165px;
+  margin-inline: auto;
+
+  color: $gray-1;
+
+  @include inter-regular-font;
+}

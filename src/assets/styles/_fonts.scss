@@ -1,0 +1,13 @@
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'Inter Regular';
+  font-display: swap;
+  src: url('../fonts/Inter/Inter-Regular.ttf') format('truetype');
+}
+
+@mixin inter-regular-font {
+  font-weight: 400;
+  font-size: 12px;
+  font-family: 'Inter Regular', sans-serif;
+}
