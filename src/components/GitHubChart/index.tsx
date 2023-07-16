@@ -22,7 +22,7 @@ function GitHubChart() {
           const dateString = date.toISOString().split('T')[0];
 
           const level = data[dateString] ? calculateLevel(data[dateString]) : 1;
-          squaresArray.unshift(<li data-level={level}></li>);
+          squaresArray.unshift(<li className="square" data-level={level}></li>);
 
           if (i % 30 === 0) {
             const monthIndex = date.getMonth();

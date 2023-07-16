@@ -68,31 +68,37 @@ $week-width: calc(#{$square-size} + #{$square-gap});
   margin: 20px;
 }
 
-.days li:nth-child(even) {
+.days .square:nth-child(even) {
   visibility: hidden;
 }
 
-.squares li {
-  background-color: $white;
+.square:hover {
+  border: 1px solid rgba($black, .5);
 }
 
-.squares li[data-level="1"] {
+.square {
+  background-color: $white;
+
+  cursor: pointer;
+}
+
+.square[data-level="1"] {
   background-color: $cell-level-1;
 }
 
-.squares li[data-level="2"] {
+.square[data-level="2"] {
   background-color: $cell-level-2;
 }
 
-.squares li[data-level="3"] {
+.square[data-level="3"] {
   background-color: $cell-level-3;
 }
 
-.squares li[data-level="4"] {
+.square[data-level="4"] {
   background-color: $cell-level-4;
 }
 
-.squares li[data-level="5"] {
+.square[data-level="5"] {
   background-color: $cell-level-5;
 }
 
