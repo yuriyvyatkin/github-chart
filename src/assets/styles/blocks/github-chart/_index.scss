@@ -72,14 +72,18 @@ $week-width: calc(#{$square-size} + #{$square-gap});
   visibility: hidden;
 }
 
-.square:hover {
-  border: 1px solid rgba($black, .5);
-}
-
 .square {
   background-color: $white;
 
   cursor: pointer;
+}
+
+.square:hover {
+  border: 1px solid rgba($black, .5);
+}
+
+.square_selected {
+  border: 1px solid rgba($black, .9)
 }
 
 .square[data-level="1"] {
