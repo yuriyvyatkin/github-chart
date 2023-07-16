@@ -5,6 +5,7 @@ import getRussianMonthName from '@/utils/getRussianMonthName';
 function GitHubChart() {
   const [squares, setSquares] = useState<JSX.Element[]>([]);
   const [months, setMonths] = useState<string[]>([]);
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +34,7 @@ function GitHubChart() {
         setSquares(squaresArray);
         setMonths(monthsArray);
       } catch (error) {
-        console.error('Ошибка при получении данных', error);
+        setError(`Ошибка при получении данных: ${error}`);
       }
     };
 
@@ -42,23 +43,29 @@ function GitHubChart() {
 
   return (
     <div className="github-chart">
-      <div className="graph">
-        <ul className="months">
-          {months.map((month) => (
-            <li key={month}>{month}</li>
-          ))}
-        </ul>
-        <ul className="days">
-          <li>Пн</li>
-          <li></li>
-          <li>Ср</li>
-          <li></li>
-          <li>Пт</li>
-          <li></li>
-          <li></li>
-        </ul>
-        <ul className="squares">{squares}</ul>
-      </div>
+      {error ? (
+        <div className="error">
+          {error}
+        </div>
+      ) : (
+        <div className="graph">
+          <ul className="months">
+            {months.map((month) => (
+              <li key={month}>{month}</li>
+            ))}
+          </ul>
+          <ul className="days">
+            <li>Пн</li>
+            <li></li>
+            <li>Ср</li>
+            <li></li>
+            <li>Пт</li>
+            <li></li>
+            <li></li>
+          </ul>
+          <ul className="squares">{squares}</ul>
+        </div>
+      )}
     </div>
   );
 }
