@@ -7,3 +7,91 @@
 
   @include inter-regular-font;
 }
+
+$square-size: 15px;
+$square-gap: 5px;
+$week-width: calc(#{$square-size} + #{$square-gap});
+
+.months {
+  grid-area: months;
+}
+
+.days {
+  grid-area: days;
+}
+
+.squares {
+  grid-area: squares;
+}
+
+.graph {
+  display: inline-grid;
+  grid-template-areas:
+    "empty months"
+    "days squares";
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+}
+
+.months {
+  display: grid;
+  grid-template-columns:
+    calc(#{$week-width} * 4) /* Янв. */
+    calc(#{$week-width} * 4) /* Февр. */
+    calc(#{$week-width} * 4) /* Март */
+    calc(#{$week-width} * 5) /* Апр. */
+    calc(#{$week-width} * 4) /* Май */
+    calc(#{$week-width} * 4) /* Июнь */
+    calc(#{$week-width} * 5) /* Июль */
+    calc(#{$week-width} * 4) /* Авг. */
+    calc(#{$week-width} * 4) /* Сент. */
+    calc(#{$week-width} * 5) /* Окт. */
+    calc(#{$week-width} * 4) /* Нояб. */
+    calc(#{$week-width} * 5); /* Дек. */
+}
+
+.days,
+.squares {
+  display: grid;
+  grid-gap: $square-gap;
+  grid-template-rows: repeat(7, $square-size);
+}
+
+.squares {
+  grid-auto-flow: column;
+  grid-auto-columns: $square-size;
+}
+
+.graph {
+  padding: 20px;
+  border: 1px #e1e4e8 solid;
+  margin: 20px;
+}
+
+.days li:nth-child(even) {
+  visibility: hidden;
+}
+
+.squares li {
+  background-color: $white;
+}
+
+.squares li[data-level="1"] {
+  background-color: $cell-level-1;
+}
+
+.squares li[data-level="2"] {
+  background-color: $cell-level-2;
+}
+
+.squares li[data-level="3"] {
+  background-color: $cell-level-3;
+}
+
+.squares li[data-level="4"] {
+  background-color: $cell-level-4;
+}
+
+.squares li[data-level="5"] {
+  background-color: $cell-level-5;
+}
