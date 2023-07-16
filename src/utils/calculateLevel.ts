@@ -5,8 +5,10 @@ const calculateLevel = (value: number): number => {
     return 4;
   } else if (value >= 10) {
     return 3;
-  } else {
+  } else if (value >= 1) {
     return 2;
+  } else {
+    return 1;
   }
 };
 

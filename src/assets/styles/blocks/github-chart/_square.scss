@@ -4,14 +4,14 @@
   background-color: $white;
 
   cursor: pointer;
+
+  &_selected {
+    border: 1px solid rgba($black, .9);
+  }
 }
 
 .square:hover {
   border: 1px solid rgba($black, .5);
-}
-
-.square_selected {
-  border: 1px solid rgba($black, .9);
 }
 
 .square[data-level='1'] {

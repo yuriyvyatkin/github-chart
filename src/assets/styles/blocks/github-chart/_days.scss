@@ -1,18 +1,15 @@
 .days {
-  grid-area: days;
-}
-
-.days {
   display: grid;
-  grid-gap: $square-gap;
+  grid-area: days;
   grid-template-rows: repeat(7, $square-size);
-}
+  grid-gap: $square-gap;
 
-.days_odd .day:nth-child(even),
-.days_odd .day:nth-child(n + 6) {
-  visibility: hidden;
-}
+  &_odd .day:nth-child(even),
+  &_odd .day:nth-child(n + 6) {
+    visibility: hidden;
+  }
 
-.days_even .day:nth-child(odd) {
-  visibility: hidden;
+  &_even .day:nth-child(odd) {
+    visibility: hidden;
+  }
 }

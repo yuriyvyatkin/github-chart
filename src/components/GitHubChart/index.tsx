@@ -7,6 +7,7 @@ import Days from './Days';
 import Square from './Square';
 import Tooltip from './Tooltip';
 import Squares from './Squares';
+import Description from './Description';
 
 function GitHubChart() {
   const [squares, setSquares] = useState<JSX.Element[]>([]);
@@ -98,6 +99,7 @@ function GitHubChart() {
             <Days data={['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']} />
             <Squares data={squares} />
           </div>
+          <Description data={['0', '1-9', '10-19', '20-29', '30+']} />
         </>
       )}
     </div>

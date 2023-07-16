@@ -6,3 +6,12 @@
   grid-auto-flow: column;
   grid-gap: $square-gap;
 }
+
+.description .squares {
+  grid-template-columns: repeat(5, $square-size);
+  grid-auto-flow: row;
+
+  max-height: $square-size;
+
+  line-height: $square-size;
+}

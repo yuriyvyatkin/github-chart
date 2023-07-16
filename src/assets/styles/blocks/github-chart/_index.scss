@@ -8,18 +8,19 @@
   min-width: 920px;
   min-height: 165px;
   margin-inline: auto;
+  padding: 20px;
 
   color: $gray-1;
 
   .graph {
     display: inline-grid;
     grid-template-areas:
-      "empty months"
-      "days squares";
+      'empty months'
+      'days squares';
     grid-template-columns: auto 1fr;
     grid-gap: 10px;
-    padding: 20px;
-    margin: 20px;
+
+    margin-bottom: 20px;
   }
 
   @import 'error';
@@ -28,4 +29,5 @@
   @import 'square';
   @import 'squares';
   @import 'tooltip';
+  @import 'description';
 }

@@ -11,38 +11,38 @@
   background-color: $black;
 
   transform: translateX(calc(-50% + #{$square-size} / 2)) translateY(calc(-100% - #{$square-size} / 2));
-}
 
-.tooltip__arrow {
-  position: absolute;
-  bottom: -8px;
-  left: calc(50% - 8px);
+  &__arrow {
+    position: absolute;
+    bottom: -8px;
+    left: calc(50% - 8px);
 
-  border-top: 8px solid $black;
-  border-right: 8px solid transparent;
-  border-left: 8px solid transparent;
-}
+    border-top: 8px solid $black;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+  }
 
-.tooltip__content {
-  display: flex;
-  flex-direction: column;
+  &__content {
+    display: flex;
+    flex-direction: column;
 
-  padding: 5px 9px 0 9px;
-}
+    padding: 5px 9px 0 9px;
 
-.tooltip__content_shortened {
-  padding-top: 8px;
-  padding-bottom: 9px;
-}
+    &_shortened {
+      padding-top: 8px;
+      padding-bottom: 9px;
+    }
 
-.tooltip__content__contributions {
-  font-size: 12px;
-}
+    &__contributions {
+      font-size: 12px;
+    }
 
-.tooltip__content__timestamp {
-  padding-bottom: 6px;
+    &__timestamp {
+      padding-bottom: 6px;
 
-  font-size: 10px;
+      font-size: 10px;
 
-  color: $gray-2;
+      color: $gray-2;
+    }
+  }
 }
