@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import calculateLevel from '@/utils/calculateLevel';
 import getRussianMonthName from '@/utils/getRussianMonthName';
-import formatDate from '@/utils/formatDate';
+import Error from './Error';
+import Months from './Months';
+import Days from './Days';
+import Square from './Square';
+import Tooltip from './Tooltip';
+import Squares from './Squares';
 
 function GitHubChart() {
   const [squares, setSquares] = useState<JSX.Element[]>([]);
@@ -44,28 +49,25 @@ function GitHubChart() {
           const isSelected = selectedSquare === i;
           const squareClass = isSelected ? 'square square_selected' : 'square';
           squaresArray.unshift(
-            <li
+            <Square
               key={i}
               className={squareClass}
-              data-level={level}
-              onClick={() => handleSquareClick(i, dateString, data[dateString])}
+              level={level}
+              clickHandler={() =>
+                handleSquareClick(i, dateString, data[dateString])
+              }
             >
               {isSelected && tooltipData && (
-                <div className="tooltip">
-                  <div className="tooltip__body">
-                    <div className="tooltip__arrow"></div>
-                    <div className="tooltip__content">
-                      <span className="tooltip__content__contributions">
-                        {tooltipData.contributions || '0'} contributions
-                      </span>
-                      <span className="tooltip__content__timestamp">
-                        {formatDate(tooltipData.date)}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <Tooltip
+                  contributions={
+                    tooltipData.contributions
+                      ? String(tooltipData.contributions)
+                      : '0'
+                  }
+                  timestamp={tooltipData.date}
+                />
               )}
-            </li>,
+            </Square>,
           );
 
           if (i % 30 === 0) {
@@ -88,25 +90,15 @@ function GitHubChart() {
   return (
     <div className="github-chart">
       {error ? (
-        <div className="error">{error}</div>
+        <Error text={error} />
       ) : (
-        <div className="graph">
-          <ul className="months">
-            {months.map((month) => (
-              <li key={month}>{month}</li>
-            ))}
-          </ul>
-          <ul className="days">
-            <li>Пн</li>
-            <li></li>
-            <li>Ср</li>
-            <li></li>
-            <li>Пт</li>
-            <li></li>
-            <li></li>
-          </ul>
-          <ul className="squares">{squares}</ul>
-        </div>
+        <>
+          <div className="graph">
+            <Months data={months} />
+            <Days data={['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']} />
+            <Squares data={squares} />
+          </div>
+        </>
       )}
     </div>
   );

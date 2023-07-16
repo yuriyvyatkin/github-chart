@@ -1,0 +1,35 @@
+.square {
+  position: relative;
+
+  background-color: $white;
+
+  cursor: pointer;
+}
+
+.square:hover {
+  border: 1px solid rgba($black, .5);
+}
+
+.square_selected {
+  border: 1px solid rgba($black, .9);
+}
+
+.square[data-level='1'] {
+  background-color: $cell-level-1;
+}
+
+.square[data-level='2'] {
+  background-color: $cell-level-2;
+}
+
+.square[data-level='3'] {
+  background-color: $cell-level-3;
+}
+
+.square[data-level='4'] {
+  background-color: $cell-level-4;
+}
+
+.square[data-level='5'] {
+  background-color: $cell-level-5;
+}

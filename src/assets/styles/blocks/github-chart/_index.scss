@@ -1,166 +1,31 @@
 .github-chart {
+  @include inter-regular-font;
+
+  $square-size: 15px;
+  $square-gap: 5px;
+  $week-width: calc(#{$square-size} + #{$square-gap});
+
   min-width: 920px;
   min-height: 165px;
   margin-inline: auto;
 
   color: $gray-1;
 
-  @include inter-regular-font;
-}
+  .graph {
+    display: inline-grid;
+    grid-template-areas:
+      "empty months"
+      "days squares";
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+    padding: 20px;
+    margin: 20px;
+  }
 
-$square-size: 15px;
-$square-gap: 5px;
-$week-width: calc(#{$square-size} + #{$square-gap});
-
-.months {
-  grid-area: months;
-}
-
-.days {
-  grid-area: days;
-}
-
-.squares {
-  grid-area: squares;
-}
-
-.graph {
-  display: inline-grid;
-  grid-template-areas:
-    "empty months"
-    "days squares";
-  grid-template-columns: auto 1fr;
-  grid-gap: 10px;
-}
-
-.months {
-  display: grid;
-  grid-template-columns:
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 5)
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 5)
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 5)
-    calc(#{$week-width} * 4)
-    calc(#{$week-width} * 5);
-}
-
-.days,
-.squares {
-  display: grid;
-  grid-gap: $square-gap;
-  grid-template-rows: repeat(7, $square-size);
-}
-
-.squares {
-  grid-auto-flow: column;
-  grid-auto-columns: $square-size;
-}
-
-.graph {
-  padding: 20px;
-  border: 1px #e1e4e8 solid;
-  margin: 20px;
-}
-
-.days .square:nth-child(even) {
-  visibility: hidden;
-}
-
-.square {
-  position: relative;
-  background-color: $white;
-
-  cursor: pointer;
-}
-
-.square:hover {
-  border: 1px solid rgba($black, .5);
-}
-
-.square_selected {
-  border: 1px solid rgba($black, .9)
-}
-
-.square[data-level="1"] {
-  background-color: $cell-level-1;
-}
-
-.square[data-level="2"] {
-  background-color: $cell-level-2;
-}
-
-.square[data-level="3"] {
-  background-color: $cell-level-3;
-}
-
-.square[data-level="4"] {
-  background-color: $cell-level-4;
-}
-
-.square[data-level="5"] {
-  background-color: $cell-level-5;
-}
-
-.tooltip {
-  position: absolute;
-  left: 0;
-  z-index: 1;
-
-  width: max-content;
-  height: 42px;
-  border-radius: 3px;
-
-  transform: translateX(calc(-50% + #{$square-size} / 2)) translateY(calc(-100% - #{$square-size} / 2));
-
-  color: $white;
-  background-color: $black;
-}
-
-.tooltip__arrow {
-  position: absolute;
-  bottom: -8px;
-  left: calc(50% - 8px);
-
-  border-top: 8px solid $black;
-  border-right: 8px solid transparent;
-  border-left: 8px solid transparent;
-}
-
-.tooltip__content {
-  display: flex;
-  flex-direction: column;
-  padding: 5px 9px 0 9px;
-}
-
-.tooltip__content__contributions {
-  font-size: 12px;
-}
-
-.tooltip__content__timestamp {
-  padding-bottom: 6px;
-
-  color: $gray-2;
-  font-size: 10px;
-}
-
-.error {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-
-  padding: 10px 20px;
-  border-radius: 4px;
-
-  font-weight: bold;
-
-  color: $white;
-  background-color: $red;
-
-  transform: translate(-50%, -50%);
+  @import 'error';
+  @import 'months';
+  @import 'days';
+  @import 'square';
+  @import 'squares';
+  @import 'tooltip';
 }

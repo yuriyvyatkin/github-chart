@@ -1,0 +1,8 @@
+.squares {
+  display: grid;
+  grid-area: squares;
+  grid-template-rows: repeat(7, $square-size);
+  grid-auto-columns: $square-size;
+  grid-auto-flow: column;
+  grid-gap: $square-gap;
+}

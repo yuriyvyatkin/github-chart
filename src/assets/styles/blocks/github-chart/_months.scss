@@ -1,0 +1,17 @@
+.months {
+  display: grid;
+  grid-template-columns:
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 5)
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 5)
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 5)
+    calc(#{$week-width} * 4)
+    calc(#{$week-width} * 5);
+  grid-area: months;
+}
