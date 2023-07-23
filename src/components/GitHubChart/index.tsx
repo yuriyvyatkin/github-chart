@@ -19,7 +19,6 @@ function GitHubChart() {
     date: string;
   } | null>(null);
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  console.log(timeZone);
 
   const handleSquareClick = (
     index: number,
@@ -37,8 +36,8 @@ function GitHubChart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://dpg.gg/test/calendar.json');
-        const data = await response.json();
+        const { default: data } = await require('@/constants');
+
         const squaresArray: JSX.Element[] = [];
         const monthsArray: string[] = [];
         const currentDate = new Date();
