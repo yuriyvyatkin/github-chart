@@ -1,4 +1,3 @@
-import React from 'react';
 import GitHubChart from "@/components/GitHubChart";
 
 function App() {

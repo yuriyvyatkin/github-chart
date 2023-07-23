@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface SquaresProps {
   data: JSX.Element[];
 }

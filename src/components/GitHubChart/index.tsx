@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import calculateLevel from '@/utils/calculateLevel';
 import getRussianMonthName from '@/utils/getRussianMonthName';
 import Error from './Error';

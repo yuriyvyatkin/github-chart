@@ -1,5 +1,6 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   resolve: {
@@ -13,6 +14,9 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
     new htmlWebpackPlugin({
       template: './src/index.html',
       favicon: './src/favicon.ico',

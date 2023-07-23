@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Square from './Square';
 import Squares from './Squares';
 import Tooltip from './Tooltip';
