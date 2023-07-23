@@ -18,6 +18,8 @@ function GitHubChart() {
     contributions: number;
     date: string;
   } | null>(null);
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  console.log(timeZone);
 
   const handleSquareClick = (
     index: number,
@@ -49,6 +51,7 @@ function GitHubChart() {
           const level = data[dateString] ? calculateLevel(data[dateString]) : 1;
           const isSelected = selectedSquare === i;
           const squareClass = isSelected ? 'square square_selected' : 'square';
+
           squaresArray.unshift(
             <Square
               key={i}
@@ -66,6 +69,7 @@ function GitHubChart() {
                       : '0'
                   }
                   timestamp={tooltipData.date}
+                  timeZone={timeZone}
                 />
               )}
             </Square>,
@@ -73,7 +77,7 @@ function GitHubChart() {
 
           if (i % 30 === 0) {
             const monthIndex = date.getMonth();
-            const monthName = getRussianMonthName(monthIndex);
+            const monthName = getRussianMonthName(monthIndex, timeZone);
             monthsArray.unshift(monthName);
           }
         }

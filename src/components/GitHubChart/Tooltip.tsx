@@ -3,9 +3,10 @@ import formatDate from '@/utils/formatDate';
 interface TooltipProps {
   contributions: string;
   timestamp?: string;
+  timeZone?: string;
 }
 
-const Tooltip = ({ contributions, timestamp }: TooltipProps) => {
+const Tooltip = ({ contributions, timestamp, timeZone }: TooltipProps) => {
   return (
     <div className="tooltip">
       <div className="tooltip__body">
@@ -18,9 +19,9 @@ const Tooltip = ({ contributions, timestamp }: TooltipProps) => {
           <span className="tooltip__content__contributions">
             {contributions} contributions
           </span>
-          {timestamp && (
+          {timestamp && timeZone && (
             <span className="tooltip__content__timestamp">
-              {formatDate(timestamp)}
+              {formatDate(timestamp, timeZone)}
             </span>
           )}
         </div>
