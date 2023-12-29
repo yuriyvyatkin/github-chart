@@ -5,8 +5,8 @@ interface MonthsProps {
 const Months = ({ data }: MonthsProps) => {
   return (
     <ul className="months">
-      {data.map((month) => (
-        <li key={month}>{month}</li>
+      {data.map((month, index) => (
+        <li key={`month-${index}`}>{month}</li>
       ))}
     </ul>
   );
