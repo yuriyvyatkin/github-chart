@@ -1,9 +1,9 @@
 const calculateLevel = (value: number): number => {
-  if (value >= 30) {
+  if (value >= 15) {
     return 5;
-  } else if (value >= 20) {
-    return 4;
   } else if (value >= 10) {
+    return 4;
+  } else if (value >= 5) {
     return 3;
   } else if (value >= 1) {
     return 2;

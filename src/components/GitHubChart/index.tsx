@@ -102,7 +102,7 @@ function GitHubChart() {
             <Days data={['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']} />
             <Squares data={squares} />
           </div>
-          <Description data={['0', '1-9', '10-19', '20-29', '30+']} />
+          <Description data={['0', '1-4', '5-9', '10-14', '15+']} />
         </>
       )}
     </div>
