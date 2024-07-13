@@ -1,5 +1,4 @@
 import formatDate from '@/utils/formatDate';
-import getNoun from '@/utils/getNoun';
 
 interface TooltipProps {
   contributions: string;
@@ -18,7 +17,7 @@ const Tooltip = ({ contributions, timestamp, timeZone }: TooltipProps) => {
           }`}
         >
           <span className="tooltip__content__contributions">
-            {contributions} {getNoun(+contributions, 'вклад', 'вклада', 'вкладов')}
+            {contributions} {Number(contributions) === 1 ? 'contribution' : 'contributions'}
           </span>
           {timestamp && timeZone && (
             <span className="tooltip__content__timestamp">

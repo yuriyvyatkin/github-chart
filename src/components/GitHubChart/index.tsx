@@ -38,6 +38,8 @@ function GitHubChart() {
       try {
         const { default: data } = await require('@/constants');
 
+        console.log(data);
+
         const squaresArray: JSX.Element[] = [];
         const monthsArray: string[] = [];
         const currentDate = new Date();
